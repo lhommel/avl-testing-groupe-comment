@@ -32,6 +32,6 @@ Tous ces cas ont été testés.
 
 - Encore une fois, voilà une capture d'écran de l'exécution des tests.
 
-![exécution_des_test](/Tests_avlV2.png "QuickCheck")
+![exécution_des_test](/tests_avlV2.png "QuickCheck")
 
 
