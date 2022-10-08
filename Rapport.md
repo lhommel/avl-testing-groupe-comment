@@ -18,3 +18,20 @@
 - Nous tenons à préciser que la librairie pytest-quickcheck semble quelque peu capricieuse en fonction de la machine sur laquelle on l'utilise. C'est pourquoi voici une capture d'écran qui atteste du bon fonctionnement de cette dernière.
 
 ![exécution_des_test](/Tests_avl.png "QuickCheck")
+
+## V2 du Projet
+
+- Suite à vos retours concernant notre première implémentation, nous avons décidé d'appliquer quelques changements au projet. Nous sommes passés de simples listes python à des objets, qui ont pour attribut un nom, une date ainsi qu'un état: FAIT ou A_FAIRE. Il est également possible de définir une priorité en tant qu'entier, le nombre le plus important étant la tâche la plus prioritaire. Cet attribut n'est pas obligatoire, si on ne le précise pas il est de base à 1.
+Nous avons fait le choix de ne pas imposer de format pour la date, pour que l'utilisateur puisse indiquer une tâche à long terme sans forcément de date de fin. 
+Cela a nécessité de faire un peu de refactoring sur nos tests, mais également d'ajouter des fonctionnalités et donc des cas à tester. 
+- Nous avons implémenté un moyen de filtrer nos objets: il est possible de retrouver des tâches portants un certain nom, une certaine date ou qui sont dans l'état que l'on cherche. Il est également possible de trier les tâches selon leur priorité.
+Tous ces cas ont été testés. 
+- Nous avons pris la décision de laisser un utilisateur insérer plusieurs tâches portants le même nom dans sa liste de tâches à faire, à condition qu'elles soient datées différement. 
+- A la place de simples chaînes de caractères, nous avons rajouté des exceptions que nous pouvons récupérer lors des tests. 
+- Nous avons également pris la décision de mieux tester notre système de fichiers, en vérifiant que le fichier soit dans le bon format, c'est-à-dire avec 3 colonnes correspondants aux attributs, que le fichier ait la bonne extension (csv), que le fichier existe. 
+
+- Encore une fois, voilà une capture d'écran de l'exécution des tests.
+
+![exécution_des_test](/Tests_avlV2.png "QuickCheck")
+
+
