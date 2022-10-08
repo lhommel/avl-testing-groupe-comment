@@ -28,7 +28,7 @@ Cela a nécessité de faire un peu de refactoring sur nos tests, mais également
 Tous ces cas ont été testés. 
 - Nous avons pris la décision de laisser un utilisateur insérer plusieurs tâches portants le même nom dans sa liste de tâches à faire, à condition qu'elles soient datées différement. 
 - A la place de simples chaînes de caractères, nous avons rajouté des exceptions que nous pouvons récupérer lors des tests. 
-- Nous avons également pris la décision de mieux tester notre système de fichiers, en vérifiant que le fichier soit dans le bon format, c'est-à-dire avec 3 colonnes correspondants aux attributs, que le fichier ait la bonne extension (csv), que le fichier existe. 
+- Nous avons également pris la décision de mieux tester notre système de fichiers, en vérifiant que le fichier soit dans le bon format, c'est-à-dire avec 4 colonnes correspondants aux attributs, que le fichier ait la bonne extension (csv), que le fichier existe. 
 
 - Encore une fois, voilà une capture d'écran de l'exécution des tests.
 
