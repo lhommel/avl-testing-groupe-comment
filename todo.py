@@ -12,7 +12,7 @@ class Todo:
         self.etat = Etat.FAIT
 
     def __str__(self):
-        return f"{self.nom}, {self.date}, {self.etat.name}"
+        return f"{self.nom}, {self.date}, {self.priorite}, {self.etat.name}"
 
     def __eq__(self, other):
         if isinstance(other, self.__class__):

@@ -71,10 +71,10 @@ def parseToDoList(string):
     l = createList()
     for t in string.splitlines():
         var = t.split(", ")
-        if len(var) != 3:
+        if len(var) != 4:
             raise Exception("Le format n'est pas correct, il n'y a pas 3 colonnes")
-        todo = Todo(var[0], var[1])
-        if var[2] == "FAIT":
+        todo = Todo(var[0], var[1], var[2])
+        if var[3] == "FAIT":
             todo.fait()
         addToList(l, todo)
     return l

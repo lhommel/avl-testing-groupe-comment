@@ -209,7 +209,7 @@ class TestAvl(unittest.TestCase):
 
 
     def test_parseToDoList(self):
-        l = avl.parseToDoList("Hello, 10/10/22, A_FAIRE\nWorld!, 05/10/22, FAIT\n")
+        l = avl.parseToDoList("Hello, 10/10/22, 1, A_FAIRE\nWorld!, 05/10/22, 2, FAIT\n")
         self.assertEqual(2, len(l))
 
     def test_readBadExtension(self):
