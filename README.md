@@ -11,5 +11,5 @@ $ ./script_test.sh
 ```
 - Il est tout de même possible d'exécuter manuellement les tests. Voici la commande : 
 ```
-$ py.test -v --randomize test_avl.py
+$ py.test -v test_avl.py
 ```

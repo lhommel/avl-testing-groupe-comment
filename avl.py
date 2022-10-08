@@ -1,15 +1,20 @@
-
+from todo import Todo
 
 
 def createList():
     return []
 
 def addToList(list, task):
-    list.append(task)
+    if isinstance(task, Todo):
+        if len(filterByDate(filterByName(list, task.nom), task.date)) == 0:
+            list.append(task)
+            return True
+        return False
+    return False
 
 def delElem(list, elem):
     if elem not in list:
-        return "L'élément n'est pas présent dans la liste"
+        raise Exception("L'élément n'est pas présent dans la liste")
     else:
         list.remove(elem)
 
@@ -25,30 +30,59 @@ def reverseList(list):
 def lenList(list):
     return len(list)
 
-def numberOfOcc(list,elem):
-    return list.count(elem)
+def filterByName(list, name):
+    res = []
+    for t in list:
+        if t.nom == name:
+            res.append(t)
+    return res
 
+def numberOfOcc(list, name):
+    return len(filterByName(list, name))
+
+
+def filterByDate(list, date):
+    res = []
+    for t in list:
+        if t.date == date:
+            res.append(t)
+    return res
+
+def filterByEtat(list, etat):
+    res = []
+    for t in list:
+        if t.etat == etat:
+            res.append(t)
+    return res
+
+def orderByPriority(list):
+    list.sort(reverse=True, key=lambda t: t.priorite)
 
 def readCSVFile(fileName):
-    try:
+    if fileName.endswith('.csv'):
         f = open(fileName, "r")
         r = f.read()
         f.close()
         return r
-    except FileNotFoundError:
-        print("Le fichier '%s' n'existe pas." %fileName)
+    raise Exception("L'extension n'est pas en .csv")
 
 
 def parseToDoList(string):
     l = createList()
     for t in string.splitlines():
-        addToList(l, t)
+        var = t.split(", ")
+        if len(var) != 3:
+            raise Exception("Le format n'est pas correct, il n'y a pas 3 colonnes")
+        todo = Todo(var[0], var[1])
+        if var[2] == "FAIT":
+            todo.fait()
+        addToList(l, todo)
     return l
 
 
 def writeToCSVFile(fileName, list):
     f = open(fileName, "w")
-    f.write('\n'.join(list))
+    f.write('\n'.join(map(str, list)))
     f.close()
     
 
@@ -61,19 +95,26 @@ def writeToCSVFile(fileName, list):
 def main():
     
     todoList = createList()
-    addToList(todoList, 'task')
-    addToList(todoList, 'task')
+    addToList(todoList, Todo('task', '10/10/22'))
+    addToList(todoList, Todo('task2', '10/10/22', 2))
     #print(isInList(todoList, 'task'))
     #delElem(todoList, 'task')
     #print(lenList(todoList))
     #print(numberOfOcc(todoList, 'task'))
-   #print(todoList)
+    #print(todoList)
     #clearList(todoList)
     #print(isInList(todoList, 'task'))
     #print(todoList)
     
     writeToCSVFile("fichiers.csv",todoList)
-    readCSVFile("fichier.csv")
+    todoList2 = parseToDoList(readCSVFile("fichiers.csv"))
+    print(str(todoList2[1]))
+    
+    print(todoList[0])
+
+    orderByPriority(todoList)
+    
+    print(todoList[0])
     
 
 
